@@ -33,9 +33,9 @@ while number_of_listings > 0:
         'Last Name': random_last_name,
         'Department': departments.generate_department(),
         'Home Phone': cell_phone,
-        'SMS': cell_phone,
+        'SMS': cell_phone if random.randint(1, 100) > 15 else '',
         'Office Phone': generate_10_digit_number(75),
-        'Alternate Phone': generate_10_digit_number(90) if type(cell_phone) == 'int' else '',
+        'Alternate Phone': generate_10_digit_number(50) if len(cell_phone) == 10 else '',
         'Pager': generate_10_digit_number(85),
         'Email': random_first_name[0].lower() + random_last_name.lower() + "@" + email_domain
     }
