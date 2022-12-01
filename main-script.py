@@ -9,7 +9,7 @@ from datetime import datetime
 print("Script Start...")
 time_stamp = datetime.now().strftime("%m-%d-%Y-%H%M%S")
 new_data = []
-fields = ['Primary Key', 'First Name', 'Last Name', 'Department', 'Primary Phone', 'SMS', 'Office Phone', 'Alternate Phone', 'Pager', 'Email']
+fields = ['Primary Key', 'First Name', 'Last Name', 'Department', 'Home Phone', 'SMS', 'Office Phone', 'Alternate Phone', 'Pager', 'Email']
 try:
     number_of_listings = int(sys.argv[1])
 except:
@@ -32,10 +32,10 @@ while number_of_listings > 0:
         'First Name': random_first_name,
         'Last Name': random_last_name,
         'Department': departments.generate_department(),
-        'Primary Phone': cell_phone,
+        'Home Phone': cell_phone,
         'SMS': cell_phone,
         'Office Phone': generate_10_digit_number(75),
-        'Alternate Phone': generate_10_digit_number(90),
+        'Alternate Phone': generate_10_digit_number(90) if type(cell_phone) == 'int' else '',
         'Pager': generate_10_digit_number(85),
         'Email': random_first_name[0].lower() + random_last_name.lower() + "@" + email_domain
     }
