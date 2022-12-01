@@ -1,14 +1,15 @@
 import csv
 import random
+import names
 import departments
-
+import json
 
 # 1 - Initialize Variables
 print("Script Start...")
 new_data = []
 fields = ['Primary Key', 'First Name', 'Last Name', 'Department', 'Phone', 'SMS', 'Pager', 'Email']
 number_of_listings = 100
-pk_counter = 1
+pk_counter = 1001
 email_domain = 'fakehospital.org'
 test_listing = {
     'primary_key': 1,
@@ -24,8 +25,8 @@ test_listing = {
 # Generate New Listings
 while number_of_listings > 0:
     cell_phone = '555' + str(random.randint(1000000, 9999999))
-    random_first_name = 'John'
-    random_last_name = 'Smith'
+    random_first_name = names.generate_name('first')
+    random_last_name = names.generate_name('last')
     new_listing = {
         'primary_key': pk_counter,
         'first_name': random_first_name,
@@ -39,7 +40,7 @@ while number_of_listings > 0:
     new_data.append(new_listing)
     number_of_listings -= 1
     pk_counter += 1
-
 print(new_data)
+
 # Finalize
 print("...Script End")
