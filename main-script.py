@@ -34,7 +34,7 @@ while number_of_listings > 0:
 print(new_data)
 
 # Create New TSV File
-with open(f'mock-data-{time_stamp}.tsv', 'w') as mock_data_file:
+with open(f'mock-data-{time_stamp}.tsv', 'w', newline='') as mock_data_file:
     mock_data_writer = csv.DictWriter(mock_data_file, delimiter='\t', fieldnames=fields)
     mock_data_writer.writeheader()
     for listing in new_data:
