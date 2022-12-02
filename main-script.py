@@ -3,14 +3,14 @@ import csv
 import random
 import names
 import departments
-import nurse_units
+import patient_locations
 from datetime import datetime
 
 # 1 - Initialize Variables and Functions
 print("Script Start...")
 time_stamp = datetime.now().strftime("%m-%d-%Y-%H%M%S")
 new_data = []
-directory_type = sys.argv[2] or 'Employee'
+directory_type = sys.argv[2]
 employee_fields = ['Primary Key', 'First Name', 'Last Name', 'Department', 'Home Phone', 'SMS', 'Office Phone', 'Alternate Phone', 'Pager', 'Email']
 patient_fields = ['Primary Key', 'Last Name', 'First Name', 'DOB', 'Nurse Unit', 'Room', 'Bed', 'Room Ext', 'Nurse Ext', 'MRN', 'Facility', 'Admit Date', 'Discharge Date', 'Deceased', 'Privacy', 'Sex']
 try:
@@ -47,18 +47,18 @@ while number_of_listings > 0:
         'Last Name': random_last_name,
         'First Name': random_first_name,
         'DOB': '',
-        'Nurse Unit': '',
-        'Room': 0,
-        'Bed': 0,
-        'Room EXT': 0,
-        'Nurse Ext': 0,
-        'MRN': 0,
-        'Facility': '',
+        'Nurse Unit': patient_locations.generate_nurse_unit,
+        'Room': patient_locations.generate_room,
+        'Bed': patient_locations.generate_bed,
+        'Room EXT': patient_locations.generate_room_ext,
+        'Nurse Ext': patient_locations.generate_nurse_ext,
+        'MRN': patient_locations.generate_mrn,
+        'Facility': patient_locations.generate_facility,
         'Admit Date': '',
         'Discharge Date': '',
-        'Deceased': False,
-        'Privacy': True,
-        'Sex': ''
+        'Deceased': False if random.randint(1, 100) > 5 else True,
+        'Privacy': True if random.randint(1, 100) > 50 else False,
+        'Sex': 'Female' if random.randint(0, 1) else 'Male'
     }
     new_data.append(new_employee_listing)
     number_of_listings -= 1
